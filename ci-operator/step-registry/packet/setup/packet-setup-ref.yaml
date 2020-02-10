@@ -1,0 +1,10 @@
+ref:
+  as: packet-setup
+  from: stable:installer
+  commands: packet-setup-commands.sh
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+  documentation: |-
+    Packet.net setup

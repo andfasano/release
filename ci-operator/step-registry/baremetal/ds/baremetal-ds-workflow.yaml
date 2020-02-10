@@ -1,0 +1,11 @@
+workflow:
+  as: baremetal-ds
+  steps:
+    pre:
+    - ref: packet-setup
+    test:
+    - ref: ds-test
+    post:
+    - ref: packet-teardown
+  documentation: |-
+    Dev-scripts workflow on baremetal

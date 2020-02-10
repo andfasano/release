@@ -1,0 +1,10 @@
+ref:
+  as: packet-teardown
+  from: stable:installer
+  commands: packet-teardown-commands.sh
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+  documentation: |-
+    Packet.net teardown

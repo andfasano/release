@@ -1,0 +1,12 @@
+ref:
+  as: baremetal-ds-test
+  from: stable:tests
+  commands: baremetal-ds-test-commands.sh
+  resources:
+    requests:
+      cpu: "3"
+      memory: 600Mi
+    limits:
+      memory: 32Gi
+  documentation: |-
+    Dev-scripts based testsuite
