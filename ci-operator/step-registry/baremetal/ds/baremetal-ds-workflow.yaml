@@ -4,7 +4,7 @@ workflow:
     pre:
     - ref: packet-setup
     test:
-    - ref: ds-test
+    - ref: baremetal-ds-test
     post:
     - ref: packet-teardown
   documentation: |-
