@@ -57,6 +57,10 @@ resource "packet_device" "server" {
   billing_cycle    = "hourly"
   tags             = ["prow_job_id=$PROW_JOB_ID", "leased_resource=$LEASED_RESOURCE", "prow_job_url=$prow_job_url"]
 }
+
+output "ip" {
+  value = packet_device.server.access_public_ipv4
+}
 EOF
 
 terraform init
@@ -76,7 +80,7 @@ fi
 cp ${terraform_home}/terraform.* ${SHARED_DIR}
 
 # Sharing artifacts required by other steps
-jq -r '.resources[0].instances[0].attributes.access_public_ipv4' terraform.tfstate > /tmp/server-ip
+terraform output ip > /tmp/server-ip
 cp /tmp/server-ip ${SHARED_DIR}
 
 
