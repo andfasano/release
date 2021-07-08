@@ -33,9 +33,9 @@ function set_test_provider() {
     # access.
     if [[ "${DS_IP_STACK}" != "v6" ]];
     then
-        export TEST_PROVIDER='\{\"type\":\"baremetal\"\}'
+        export TEST_PROVIDER='{"type":"baremetal"}'
     else
-        export TEST_PROVIDER='\{\"type\":\"baremetal\",\"disconnected\":true\}'
+        export TEST_PROVIDER='{"type":"baremetal","disconnected":true}'
     fi
 }
 
@@ -70,7 +70,7 @@ packet)
         # Mirroring test images is supported only for versions greater than or equal to 4.8
         mirror_test_images
     else
-        export TEST_PROVIDER='\{\"type\":\"\skeleton\"\}'
+        export TEST_PROVIDER='{"type":"skeleton"}'
         use_minimal_test_list
     fi
     ;;
