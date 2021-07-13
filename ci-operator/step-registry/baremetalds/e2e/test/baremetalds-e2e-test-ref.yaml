@@ -62,6 +62,13 @@ ref:
       \[sig-operator\] an end user can use OLM can subscribe to the operator
       \[sig-storage\] In-tree Volumes \[Driver: nfs\] \[Testpattern: Dynamic PV (default fs)\] provisioning should provision storage with mount options
       \[sig-network\] Netpol \[LinuxOnly\] NetworkPolicy between server and client should stop enforcing policies after they are deleted
+      \[sig-cli] Kubectl client Simple pod should support exec through an HTTP proxy
+      \[sig-cli] Kubectl client Simple pod should support exec through kubectl proxy
+      \[sig-node] Pods should support retrieving logs from the container over websockets
+      \[sig-cli] Kubectl Port forwarding With a server listening on localhost should support forwarding over websockets
+      \[sig-cli] Kubectl Port forwarding With a server listening on 0.0.0.0 should support forwarding over websockets
+      \[sig-node] Pods should support remote command execution over websockets
+      \[sig-network-edge]\[Conformance]\[Area:Networking]\[Feature:Router] The HAProxy router should be able to connect to a service that is idled because a GET on the route will unidle it
     documentation: Regular expression (POSIX basic regular expression) of tests to skip. Note that the current list it's just a temporary measure for the baremetal platform.
   - name: TEST_UPGRADE_OPTIONS
     default: "abort-at=100"
