@@ -66,7 +66,7 @@ tests:
   commands: export GOLANGCI_LINT_CACHE=/tmp/.cache make lint
   container:
     from: src
-- as: e2e-metal-ipi
+- as: e2e-metal-ipi-trigger
   steps:
     cluster_profile: packet
     env:
@@ -74,11 +74,11 @@ tests:
         IP_STACK=v4
         NETWORK_TYPE=OpenShiftSDN
     workflow: baremetalds-e2e
-- as: e2e-metal-ipi-serial-ipv4
+- as: e2e-metal-ipi-serial-ipv4-trigger
   steps:
     cluster_profile: packet
     workflow: baremetalds-e2e-serial-ipv4
-- as: e2e-metal-ipi-ovn-ipv6
+- as: e2e-metal-ipi-ovn-ipv6-trigger
   steps:
     cluster_profile: packet
     env:
@@ -86,7 +86,7 @@ tests:
         IP_STACK=v6
         NETWORK_TYPE=OVNKubernetes
     workflow: baremetalds-e2e
-- as: e2e-metal-ipi-ovn-dualstack
+- as: e2e-metal-ipi-ovn-dualstack-trigger
   steps:
     cluster_profile: packet
     env:
@@ -94,7 +94,7 @@ tests:
         IP_STACK=v4v6
         NETWORK_TYPE=OVNKubernetes
     workflow: baremetalds-e2e
-- as: e2e-metal-ipi-virtualmedia
+- as: e2e-metal-ipi-virtualmedia-trigger
   steps:
     cluster_profile: packet
     workflow: baremetalds-e2e-virtualmedia
