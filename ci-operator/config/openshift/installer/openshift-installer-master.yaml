@@ -284,11 +284,7 @@ tests:
   run_if_changed: (^(data/.*|pkg/.*|images)/baremetal/)|(^vendor/github.com/metal3-io/)
   steps:
     cluster_profile: equinix-ocp-metal
-    env:
-      DEVSCRIPTS_CONFIG: |
-        IP_STACK=v4
-        NETWORK_TYPE=OpenShiftSDN
-    workflow: baremetalds-e2e
+    workflow: baremetalds-e2e-ipv4
 - as: e2e-metal-ipi-swapped-hosts
   optional: true
   run_if_changed: (^(data/.*|pkg/.*|images)/baremetal/)|(^vendor/github.com/metal3-io/)
@@ -300,35 +296,27 @@ tests:
         NETWORK_TYPE=OpenShiftSDN
         HOSTS_SWAP_DEFINITION=true
     workflow: baremetalds-e2e
-- as: e2e-metal-ipi-ovn-ipv6
-  optional: true
-  skip_if_only_changed: (^docs/)|((^|/)OWNERS(_ALIASES)?$)|((^|/)[A-Z]+\.md$)|(^(data/.*|pkg/.*|images)/(aws|azure|baremetal|gcp|libvirt|openstack|ovirt|vsphere)/)|(^vendor/github.com/metal3-io/)
-  steps:
-    cluster_profile: equinix-ocp-metal
-    env:
-      DEVSCRIPTS_CONFIG: |
-        IP_STACK=v6
-        NETWORK_TYPE=OVNKubernetes
-    workflow: baremetalds-e2e
-- as: e2e-metal-ipi-ovn-ipv6-required
+- as: e2e-metal-ipi-proxy-ipv4
   run_if_changed: (^(data/.*|pkg/.*|images)/baremetal/)|(^vendor/github.com/metal3-io/)
   steps:
     cluster_profile: equinix-ocp-metal
-    env:
-      DEVSCRIPTS_CONFIG: |
-        IP_STACK=v6
-        NETWORK_TYPE=OVNKubernetes
-    workflow: baremetalds-e2e
+    workflow: baremetalds-e2e-proxy-ipv4
+- as: e2e-metal-ipi-proxy-ipv6
+  run_if_changed: (^(data/.*|pkg/.*|images)/baremetal/)|(^vendor/github.com/metal3-io/)
+  steps:
+    cluster_profile: equinix-ocp-metal
+    workflow: baremetalds-e2e-proxy-ipv6    
+- as: e2e-metal-ipi-ovn-ipv6
+  run_if_changed: (^(data/.*|pkg/.*|images)/baremetal/)|(^vendor/github.com/metal3-io/)
+  steps:
+    cluster_profile: equinix-ocp-metal
+    workflow: baremetalds-e2e-ovn-ipv6
 - as: e2e-metal-ipi-ovn-dualstack
   optional: true
   run_if_changed: (^(data/.*|pkg/.*|images)/baremetal/)|(^vendor/github.com/metal3-io/)
   steps:
     cluster_profile: equinix-ocp-metal
-    env:
-      DEVSCRIPTS_CONFIG: |
-        IP_STACK=v4v6
-        NETWORK_TYPE=OVNKubernetes
-    workflow: baremetalds-e2e
+    workflow: baremetalds-e2e-ovn-dualstack
 - as: e2e-metal-ipi-virtualmedia
   optional: true
   run_if_changed: (^(data/.*|pkg/.*|images)/baremetal/)|(^vendor/github.com/metal3-io/)
