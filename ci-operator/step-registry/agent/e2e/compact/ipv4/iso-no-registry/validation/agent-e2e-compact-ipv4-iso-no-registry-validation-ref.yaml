@@ -1,0 +1,11 @@
+ref:
+  as: agent-e2e-compact-ipv4-iso-no-registry-validation
+  from: dev-scripts
+  grace_period: 10m 
+  commands: agent-e2e-compact-ipv4-iso-no-registry-validation-commands.sh
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 500Mi
+  documentation: |-
+    Verify that the cluster deployed via the iso-no-registry step was installed correctly.
